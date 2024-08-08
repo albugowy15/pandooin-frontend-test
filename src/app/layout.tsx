@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { albertSans, thesignature, unbounded } from "@/fonts";
 
 export const metadata: Metadata = {
   title: "Pandooin Frontend Test",
@@ -16,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${thesignature.variable} ${unbounded.variable} ${albertSans.variable}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
