@@ -2,7 +2,7 @@ import { Albert_Sans, Unbounded } from "next/font/google";
 import localFont from "next/font/local";
 
 export const thesignature = localFont({
-  src: "./Thesignature.woff2",
+  src: "../public/fonts/Thesignature.woff2",
   display: "swap",
   variable: "--font-thesignature",
 });
