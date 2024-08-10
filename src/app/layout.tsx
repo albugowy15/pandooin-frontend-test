@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
 import { albertSans, thesignature, unbounded } from "@/font";
 import { Footer, Header, Content } from "@/layouts/main";
 import { TanstackQueryProvider } from "@/providers/query";
@@ -8,6 +8,7 @@ import { TanstackQueryProvider } from "@/providers/query";
 export const metadata: Metadata = {
   title: "Pandooin Frontend Test",
   description: "Pandooin Frontend Test",
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({

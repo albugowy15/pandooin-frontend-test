@@ -16,11 +16,14 @@ const Articles = () => {
 
   const articlesRes = useQuery(articlesFetch);
   return (
-    <section className="px-4 lg:py-[72px] w-full max-w-7xl mx-auto">
+    <section
+      id="articles"
+      className="px-4 lg:py-[72px] w-full max-w-7xl mx-auto"
+    >
       <h2 className="font-unbounded text-xl md:text-3xl text-primary font-bold">
         Articles
       </h2>
-      <p className="font-albertsans md:text-lg">
+      <p className="md:text-lg">
         Our curated writings, offering something for every reader.
       </p>
 
@@ -35,12 +38,17 @@ const Articles = () => {
 
 type ArticleCardProps = Pick<
   Article,
-  "title" | "featured_image" | "featured_image_caption"
+  "title" | "featured_image" | "featured_image_caption" | "slug"
 >;
 
 const ArticleCard = (props: { data: ArticleCardProps }) => {
+  const articleUrl = `https://pandooin.com/blog/article/${props.data.slug}`;
   return (
-    <div className="w-full flex flex-col first:lg:row-span-2 first:lg:col-span-2">
+    <a
+      href={articleUrl}
+      className="w-full flex flex-col first:lg:row-span-2 first:lg:col-span-2"
+      aria-label={props.data.title}
+    >
       <div className="relative w-full h-full aspect-video overflow-hidden">
         <Image
           className="object-cover object-center grayscale hover:grayscale-0 transition-all ease-in-out duration-300"
@@ -51,11 +59,11 @@ const ArticleCard = (props: { data: ArticleCardProps }) => {
       </div>
 
       <div className="w-full p-6 lg:p-4 bg-foreground flex flex-col space-y-2">
-        <p className="m-0 text-primary-foreground text-base font-bold line-clamp-2 font-albertsans">
+        <p className="m-0 text-primary-foreground text-base font-bold line-clamp-2">
           {props.data.title}
         </p>
       </div>
-    </div>
+    </a>
   );
 };
 

@@ -22,7 +22,10 @@ const Destinations = () => {
 
   const productData = useQuery(productsFetch);
   return (
-    <section className="px-4 py-10 lg:py-[72px] w-full max-w-7xl mx-auto flex flex-col space-y-6">
+    <section
+      id="destinations"
+      className="px-4 py-10 lg:py-[72px] w-full max-w-7xl mx-auto flex flex-col space-y-6"
+    >
       <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
         <h2 className="font-unbounded font-bold text-xl md:text-3xl text-primary">
           Destinations
@@ -32,7 +35,7 @@ const Destinations = () => {
           className="flex gap-2 items-center md:justify-end"
         >
           <ChevronRight className="rounded-full border border-primary p-1 h-8 w-8" />
-          <p className="font-albertsans text-sm text-primary">EXPLORE MORE</p>
+          <p className="text-sm text-primary">EXPLORE MORE</p>
         </Link>
       </div>
 
@@ -47,7 +50,7 @@ const Destinations = () => {
         className="flex gap-2 items-center justify-center md:justify-end"
       >
         <ChevronRight className="rounded-full border border-primary p-1 h-8 w-8" />
-        <p className="font-albertsans text-sm text-primary">EXPLORE MORE</p>
+        <p className="text-sm text-primary">EXPLORE MORE</p>
       </Link>
     </section>
   );
@@ -74,23 +77,21 @@ const DestinationCard = (props: { data: DestinationCardProps }) => {
       </div>
 
       <div className="flex-1 flex flex-col gap-2">
-        <p className="font-albertsans text-sm lg:text-base text-primary uppercase">
+        <p className="text-sm lg:text-base text-primary uppercase">
           {props.data.itinerary_day} days
         </p>
         <h3 className="font-unbounded font-bold text-lg lg:text-xl">
           {props.data.itinerary_name}
         </h3>
-        <p className="font-albertsans font-bold text-sm lg:text-base text-primary">
+        <p className="font-bold text-sm lg:text-base text-primary">
           Organized by {props.data.partner_name}
         </p>
-        <p className="font-albertsans text-primary text-sm lg:text-base line-clamp-3">
+        <p className="text-primary text-sm lg:text-base line-clamp-3">
           {props.data.itinerary_short_description}
         </p>
         <div className="flex justify-between mt-6 lg:mt-14 items-center">
           <div>
-            <p className="font-albertsans text-sm lg:text-base text-primary">
-              Start from
-            </p>
+            <p className="text-sm lg:text-base text-primary">Start from</p>
             <p className="font-unbounded font-medium text-primary text-xl lg:text-2xl">
               IDR{" "}
               {toIDRString(

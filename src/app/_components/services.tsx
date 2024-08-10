@@ -28,7 +28,10 @@ const Services = () => {
         />
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 md:gap-14 justify-center items-center md:w-[80%] mx-auto py-14">
+      <div
+        id="discover-tailored-experiences"
+        className="flex flex-col md:flex-row gap-4 md:gap-14 justify-center items-center md:w-[80%] mx-auto py-14"
+      >
         <Image
           src="/images/icons/puzzle_brush.png"
           alt="Discover Tailored Experience"
@@ -39,11 +42,13 @@ const Services = () => {
           <h3 className="font-bold font-unbounded text-center md:text-left text-xl md:text-3xl text-primary">
             Discover Tailored Experiences
           </h3>
-          <p className="font-albertsans text-center md:text-left text-sm md:text-lg text-black">
+          <p className="text-center md:text-left text-sm md:text-lg text-black">
             Create your own journey, personalized to suit your preferences and
             interests, ensuring a once-in-a-lifetime adventure awaits.
           </p>
-          <Button className="w-full md:w-fit">Customize Your Trip</Button>
+          <a href="https://pandooin.com/id/tailor-made/create?utm_source=zamrood&utm_medium=website&utm_campaign=premium">
+            <Button className="w-full md:w-fit">Customize Your Trip</Button>
+          </a>
         </div>
       </div>
 
@@ -72,12 +77,10 @@ const ServiceItem = (props: {
         loading="eager"
         alt="Personal Itineraries Service"
       />
-      <h4 className="font-albertsans font-bold text-lg md:text-2xl text-center">
+      <h4 className="font-bold text-lg md:text-2xl text-center">
         {props.title}
       </h4>
-      <p className="font-albertsans text-center text-sm text-black">
-        {props.desc}
-      </p>
+      <p className="text-center text-sm text-black">{props.desc}</p>
     </div>
   );
 };
