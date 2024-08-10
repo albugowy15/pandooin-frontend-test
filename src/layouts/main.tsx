@@ -5,18 +5,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/button";
 import { CircleX, Menu } from "lucide-react";
+import { Navigation, navigations } from "@/configs/navigation";
+
+interface NavItemProps extends Navigation {
+  setMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const NavItem = (props: NavItemProps) => {
+  return (
+    <Link
+      onClick={() => {
+        if (props.setMenuOpen) {
+          props.setMenuOpen(false);
+        }
+      }}
+      className="border-b-2 border-primary-foreground hover:border-foreground py-3"
+      href={props.href}
+    >
+      {props.title}
+    </Link>
+  );
+};
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   return (
-    <header className="lg:container py-4 px-4 md:px-12">
+    <header className="lg:container py-4 px-4 md:px-12 sticky top-0 bg-primary-foreground z-20">
       <div className="flex flex-row justify-between items-center">
-        <Image
-          src="/images/brands/zamrood_colorful.png"
-          alt="Zamrood Brand Logo"
-          width={130}
-          height={80}
-        />
+        <Link href="/">
+          <Image
+            src="/images/brands/zamrood_colorful.png"
+            alt="Zamrood Brand Logo"
+            width={130}
+            height={80}
+          />
+        </Link>
         <Menu
           className="lg:hidden rounded-full p-2 border border-foreground h-10 w-10 cursor-pointer"
           onClick={() => setMenuOpen(true)}
@@ -29,21 +51,23 @@ const Header = () => {
                 onClick={() => setMenuOpen(false)}
               />
               <nav className="flex flex-col gap-6 text-right">
-                <Link href="/">Homepage</Link>
-                <Link href="/">Customize Your Trip</Link>
-                <Link href="/">Destination</Link>
-                <Link href="/">Article</Link>
-                <Button variant="outline">Need Assistance?</Button>
+                {navigations.map((item, idx) => (
+                  <NavItem key={idx} {...item} setMenuOpen={setMenuOpen} />
+                ))}
+                <a href="https://wa.me/6283831556160?text=Hi,%20I%20wanna%20ask%20question%20about%20Zamrood">
+                  <Button variant="outline">Need Assistance?</Button>
+                </a>
               </nav>
             </aside>
           </div>
         )}
-        <nav className="hidden lg:flex gap-12 items-center text-foreground font-bold">
-          <Link href="/">Homepage</Link>
-          <Link href="/">Customize Your Trip</Link>
-          <Link href="/">Destination</Link>
-          <Link href="/">Article</Link>
-          <Button variant="outline">Need Assistance?</Button>
+        <nav className="hidden lg:inline-flex gap-12 items-center text-foreground font-bold">
+          {navigations.map((item, idx) => (
+            <NavItem key={idx} {...item} />
+          ))}
+          <a href="https://wa.me/6283831556160?text=Hi,%20I%20wanna%20ask%20question%20about%20Zamrood">
+            <Button variant="outline">Need Assistance?</Button>
+          </a>
         </nav>
       </div>
     </header>
@@ -91,7 +115,7 @@ const Footer = () => {
 };
 
 const Content = ({ children }: { children: React.ReactNode }) => {
-  return <main>{children}</main>;
+  return <main className="scroll-mt-36">{children}</main>;
 };
 
 export { Header, Footer, Content };
