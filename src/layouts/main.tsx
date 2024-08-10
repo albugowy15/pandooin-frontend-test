@@ -1,10 +1,13 @@
+"use client";
+
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/button";
-import { Menu } from "lucide-react";
+import { CircleX, Menu } from "lucide-react";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = React.useState(false);
   return (
     <header className="lg:container py-4 px-4 md:px-12">
       <div className="flex flex-row justify-between items-center">
@@ -14,7 +17,27 @@ const Header = () => {
           width={130}
           height={80}
         />
-        <Menu className="rounded-full p-2 border border-foreground h-10 w-10 cursor-pointer" />
+        <Menu
+          className="lg:hidden rounded-full p-2 border border-foreground h-10 w-10 cursor-pointer"
+          onClick={() => setMenuOpen(true)}
+        />
+        {menuOpen && (
+          <div className="bg-black/70 fixed inset-0 z-10">
+            <aside className="bg-white h-screen w-[70%] right-0 top-0 absolute flex flex-col gap-20 items-end p-5">
+              <CircleX
+                className="w-10 h-10 cursor-pointer"
+                onClick={() => setMenuOpen(false)}
+              />
+              <nav className="flex flex-col gap-6 text-right">
+                <Link href="/">Homepage</Link>
+                <Link href="/">Customize Your Trip</Link>
+                <Link href="/">Destination</Link>
+                <Link href="/">Article</Link>
+                <Button variant="outline">Need Assistance?</Button>
+              </nav>
+            </aside>
+          </div>
+        )}
         <nav className="hidden lg:flex gap-12 items-center text-foreground font-bold">
           <Link href="/">Homepage</Link>
           <Link href="/">Customize Your Trip</Link>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Services = () => {
   return (
-    <section className="container flex flex-col justify-center py-8 lg:py-14 px-4 lg:px-12">
+    <section className="px-4 py-10 lg:py-[72px] w-full max-w-7xl mx-auto">
       <h2 className="font-thesignature text-5xl md:text-7xl text-center">
         Beyond Premium
       </h2>

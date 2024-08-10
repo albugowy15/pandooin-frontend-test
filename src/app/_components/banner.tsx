@@ -3,7 +3,7 @@ import { Button } from "@/components/button";
 const Banner = () => {
   return (
     <>
-      <section className="bg-primary text-primary-foreground px-4 lg:px-12 text-center md:text-left flex flex-col justify-center items-center md:items-start h-screen bg-[url('/images/backgrounds/website_header.jpg')] bg-cover">
+      <section className="bg-primary text-primary-foreground px-4 lg:px-12 lg:py-[72px] text-center md:text-left flex flex-col justify-center items-center md:items-start h-screen bg-[url('/images/backgrounds/website_header.jpg')] bg-cover">
         <h1 className="font-thesignature text-6xl lg:text-7xl text-secondary leading-none">
           Premium Travel
         </h1>

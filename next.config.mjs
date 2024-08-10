@@ -13,6 +13,22 @@ const config = {
       fullUrl: true,
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.zamrood.com",
+      },
+    ],
+  },
 };
 
 const withBundleAnalyzer = bundleAnalyzer({

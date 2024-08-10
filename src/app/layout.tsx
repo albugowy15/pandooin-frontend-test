@@ -1,7 +1,9 @@
+import * as React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { albertSans, thesignature, unbounded } from "@/font";
 import { Footer, Header, Content } from "@/layouts/main";
+import { TanstackQueryProvider } from "@/providers/query";
 
 export const metadata: Metadata = {
   title: "Pandooin Frontend Test",
@@ -19,9 +21,11 @@ export default function RootLayout({
       className={`${thesignature.variable} ${unbounded.variable} ${albertSans.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-background antialiased">
-        <Header />
-        <Content>{children}</Content>
-        <Footer />
+        <TanstackQueryProvider>
+          <Header />
+          <Content>{children}</Content>
+          <Footer />
+        </TanstackQueryProvider>
       </body>
     </html>
   );
